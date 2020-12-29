@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>
+        <!--page header-->
+        <div>
+            <h1>Calculator</h1>
+            <br>
+        </div>
+        <!--calc-->
+        <div class="calc">
+            <!--display-->
+            <div id="display">
+                <h6 class="display">
+                    <!--to display operations-->
+                    {{ expDis }}
+                </h6>
+                <h6 class="display">
+                    <!--to display operations-->
+                    {{ operandDis }}
+                </h6>
+            </div>
+            <!--buttons-->
+            <div id="buttons">
+                <!--row 1-->
+                <div class="row">
+                    <button class="b25" v-on:click = "unary('percent')">%</button>
+                    <button class="b25" v-on:click = "clearDisplay()">CE</button>
+                    <button class="b25" v-on:click = "clearDisplay()">C</button>
+                    <button class="b25" v-on:click = "deleteOne()">DEL</button>
+                </div>
+                <!--row 2-->
+                <div class="row">
+                    <button class="b25" v-on:click = "unary('inverse')">1/&#x1D465;</button>
+                    <button class="b25" v-on:click = "unary('sq')">&#x1D465; &#178;</button>
+                    <button class="b25" v-on:click = "unary('sqrt')">&radic; &#x1D465;</button>
+                    <button class="b25" v-on:click = "operate('÷')"> &divide; </button>
+                </div>
+                <!--row 3-->
+                <div class="row">
+                    <button class="b25" v-on:click = "concat('7')">7</button>
+                    <button class="b25" v-on:click = "concat('8')">8</button>
+                    <button class="b25" v-on:click = "concat('9')">9</button>
+                    <button class="b25" v-on:click = "operate('×')">&times;</button>
+                </div>
+                <!--row 4-->
+                <div class="row">
+                    <button class="b25" v-on:click = "concat('4')">4</button>
+                    <button class="b25" v-on:click = "concat('5')">5</button>
+                    <button class="b25" v-on:click = "concat('6')">6</button>
+                    <button class="b25" v-on:click = "operate('-')">&minus;</button>
+                </div>
+                <!--row 5-->
+                <div class="row">
+                    <button class="b25" v-on:click = "concat('1')">1</button>
+                    <button class="b25" v-on:click = "concat('2')">2</button>
+                    <button class="b25" v-on:click = "concat('3')">3</button>
+                    <button class="b25" v-on:click = "operate('+')">&plus;</button>
+                </div>
+                <!--row 6-->
+                <div class="row">
+                    <button class="b25" v-on:click = "unary('negate')">&plus;/&minus;</button>
+                    <button class="b25" v-on:click = "concat('0')">0</button>
+                    <button class="b25" v-on:click = "concat('.')">.</button>
+                    <button class="b25" v-on:click = "equal()">&equals;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Import App -->
+<script src="./main.js"></script>
+<!-- Mount App -->
+<script>
+    const mountedApp = app.mount('#app')
+</script>
+</body>
+</html>
